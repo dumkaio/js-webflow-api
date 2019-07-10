@@ -200,6 +200,13 @@ export default class Webflow {
 
     return this.put(`/collections/${collectionId}/items/${itemId}`, data, query);
   }
+  
+  patchItem({ collectionId, itemId, ...data }, query = {}){
+    if (!collectionId) return Promise.reject(buildRequiredArgError('collectionId'));
+    if (!itemId) return Promise.reject(buildRequiredArgError('itemId'));
+
+    return this.patch(`/collections/${collectionId}/items/${itemId}`, data, query);
+  }
 
   removeItem({ collectionId, itemId }, query = {}) {
     if (!collectionId) return Promise.reject(buildRequiredArgError('collectionId'));
